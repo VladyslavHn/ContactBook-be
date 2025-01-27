@@ -33,6 +33,13 @@ export const startServer = () => {
     app.get('/contacts/:contactId', async (req, res, next) => {
         const id = req.params.contactId;
         const contact = await getContactById(id);
+        if (!contact) {
+            return res.status(404).json({
+            status: 404,
+            message: `Contact with id ${id} not found!`,
+        });
+        }
+
         res.json({
             status: 200,
             message: `Successfully get contact with id ${id}!`,
