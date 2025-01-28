@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+// Schéma adresy pro kontakt
 const AddressSchema = new mongoose.Schema({
   description: {
     type: String,
@@ -19,6 +20,7 @@ const AddressSchema = new mongoose.Schema({
   },
 });
 
+// Schéma kontaktu
 const ContactSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -34,6 +36,7 @@ const ContactSchema = new mongoose.Schema({
     type: [String],
     required: true,
     validate: {
+      // Kontrola, že je uveden alespoň jeden email
       validator: function (emails) {
         return emails.length > 0;
       },
