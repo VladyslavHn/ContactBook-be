@@ -1,8 +1,8 @@
-import { createContact } from '../../../services/contacts.js';
-import { Contact } from '../../../db/models/contact.js';
-import { type IContact, type IContactData } from '../../../db/models/contact.js';
+import { createContact } from '../../services/contacts.js';
+import { Contact } from '../../db/models/contact.js';
+import { type IContact, type IContactData } from '../../db/models/contact.js';
 
-jest.mock('../../../db/models/contact.js');
+jest.mock('../../db/models/contact.js');
 
 describe('createContact', () => {
   it('should create a new contact successfully', async () => {

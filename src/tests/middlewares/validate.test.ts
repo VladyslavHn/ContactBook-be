@@ -1,5 +1,5 @@
-import { validate } from '../../../middlewares/validate.js';
-import { ContactSchema } from '../../../validation/contactValidation.js';
+import { validate } from '../../middlewares/validate.js';
+import { ContactSchema } from '../../validation/contactValidation.js';
 import { Request, Response, NextFunction } from 'express';
 
 describe('validate middleware', () => {

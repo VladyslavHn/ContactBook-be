@@ -1,4 +1,4 @@
-import { notFoundMiddleware } from '../../../middlewares/notFoundMiddleware.js';
+import { notFoundMiddleware } from '../../middlewares/notFoundMiddleware.js';
 import { Request, Response } from 'express';
 
 describe('notFoundMiddleware', () => {
