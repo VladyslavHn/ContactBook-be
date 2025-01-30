@@ -1,21 +1,26 @@
-import express from 'express'
-import pino from 'pino-http'
+import express, { Express } from 'express';
+
 import cors from 'cors'
 import { env } from './utils/env.js'
+import * as pinoHttp from 'pino-http';
 import { ENV_VARS } from './constants/index.js'
 import { errorhandlerMiddleware } from './middlewares/errorhandlerMiddleware.js'
 import { notFoundMiddleware } from './middlewares/notFoundMiddleware.js'
 import contactsRouter from './routers/contacts.js'
 
-export const startServer = () => {
+export const startServer = (): void => {
 
-    const app = express();
+    const app: Express = express();
 
-    app.use(pino({
-        transport: {
-            target: 'pino-pretty', // Formátování logů pro lepší čitelnost
-        },
-    }));
+    app.use(
+        pinoHttp.default({
+            transport: {
+                target: 'pino-pretty',
+            },
+        })
+    );
+            // Formátování logů pro lepší čitelnost
+
 
     // Povolení CORS pro přístup z jiných domén
     app.use(cors())
@@ -33,7 +38,7 @@ export const startServer = () => {
     app.use(errorhandlerMiddleware)
 
     // Určení portu pro server, buď z ENV, nebo výchozí hodnota (3000)
-    const PORT = env(ENV_VARS.PORT, 3000);
+    const PORT = Number(env(ENV_VARS.PORT, "3000"));
 
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}!`);

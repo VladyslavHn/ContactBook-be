@@ -4,4 +4,4 @@ export const ENV_VARS = {
     MONGODB_PASSWORD: 'MONGODB_PASSWORD',
     MONGODB_URL: 'MONGODB_URL',
     MONGODB_DB: 'MONGODB_DB',
-}
+} as const;
